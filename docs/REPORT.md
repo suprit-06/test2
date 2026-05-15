@@ -55,22 +55,17 @@ The README documents prerequisites, installation, environment setup, database co
 
 ```text
 spendwise/
-├── .dockerignore
 ├── .env.example
 ├── .gitignore
-├── Procfile
 ├── README.md
-├── docker-compose.prod.yml
 ├── docker-compose.yml
 ├── docs/
-│   ├── DEPLOYMENT.md
 │   └── REPORT.md
 ├── package.json
 ├── scripts/
 │   └── dev.mjs
 └── apps/
     ├── api/
-    │   ├── Dockerfile
     │   ├── package.json
     │   ├── prisma/
     │   │   ├── schema.prisma
@@ -97,13 +92,10 @@ spendwise/
     │   └── tsconfig.json
     └── web/
         ├── .eslintrc.json
-        ├── Dockerfile
         ├── next-env.d.ts
         ├── next.config.mjs
         ├── package.json
         ├── postcss.config.js
-        ├── public/
-        │   └── .gitkeep
         ├── src/
         │   ├── app/
         │   │   ├── globals.css
@@ -115,8 +107,7 @@ spendwise/
         │   └── lib/
         │       └── api.ts
         ├── tailwind.config.ts
-        ├── tsconfig.json
-        └── vercel.json
+        └── tsconfig.json
 ```
 
 ## 4. How to Run Locally
@@ -147,7 +138,6 @@ Main areas of the codebase include comments explaining why configuration validat
 - Expanded seed data to include historical trend data, budgets, and recurring payments.
 - Normalized dashboard response fields for frontend chart compatibility.
 - Added `.eslintrc.json` to avoid interactive Next.js lint setup prompts.
-- Added familiar deployment files for Docker, Docker Compose, Vercel, and Heroku-style release workflows.
 
 ## 7. Future Enhancements
 

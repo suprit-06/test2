@@ -10,22 +10,17 @@ Build **SpendWise**, a secure and scalable personal finance analytics platform t
 
 ```text
 spendwise/
-├── .dockerignore
 ├── .env.example
 ├── .gitignore
-├── Procfile
 ├── README.md
-├── docker-compose.prod.yml
 ├── docker-compose.yml
 ├── docs/
-│   ├── DEPLOYMENT.md
 │   └── REPORT.md
 ├── package.json
 ├── scripts/
 │   └── dev.mjs
 └── apps/
     ├── api/
-    │   ├── Dockerfile
     │   ├── package.json
     │   ├── prisma/
     │   │   ├── schema.prisma
@@ -52,13 +47,10 @@ spendwise/
     │   └── tsconfig.json
     └── web/
         ├── .eslintrc.json
-        ├── Dockerfile
         ├── next-env.d.ts
         ├── next.config.mjs
         ├── package.json
         ├── postcss.config.js
-        ├── public/
-        │   └── .gitkeep
         ├── src/
         │   ├── app/
         │   │   ├── globals.css
@@ -70,8 +62,7 @@ spendwise/
         │   └── lib/
         │       └── api.ts
         ├── tailwind.config.ts
-        ├── tsconfig.json
-        └── vercel.json
+        └── tsconfig.json
 ```
 
 ## Local Setup
@@ -94,7 +85,7 @@ npm install
 cp .env.example .env
 ```
 
-Update `DATABASE_URL`, `JWT_SECRET`, and `CORS_ORIGIN` if your local setup differs from the example. `CORS_ORIGIN` accepts comma-separated deployed web origins, and cloud platforms can provide `PORT` instead of `API_PORT`. The demo dashboard can authenticate against the seeded account with `SPENDWISE_DEMO_EMAIL` and `SPENDWISE_DEMO_PASSWORD`.
+Update `DATABASE_URL`, `JWT_SECRET`, and `CORS_ORIGIN` if your local setup differs from the example. The demo dashboard can authenticate against the seeded account with `SPENDWISE_DEMO_EMAIL` and `SPENDWISE_DEMO_PASSWORD`.
 
 ### 4. Start PostgreSQL
 
@@ -162,9 +153,7 @@ Protected endpoints require `Authorization: Bearer <token>`.
 
 ## Deployment Notes
 
-Deployment-friendly files are included for familiar hosting flows: `apps/api/Dockerfile`, `apps/web/Dockerfile`, `docker-compose.prod.yml`, `Procfile`, and `apps/web/vercel.json`. See `docs/DEPLOYMENT.md` for Docker, Vercel, Railway, Render, and Heroku-style steps.
-
 - Deploy `apps/web` to Vercel and set `NEXT_PUBLIC_API_URL` to the deployed API URL.
-- Deploy `apps/api` to Railway or Render with PostgreSQL and set `DATABASE_URL`, `JWT_SECRET`, `PORT`, and `CORS_ORIGIN`.
+- Deploy `apps/api` to Railway with PostgreSQL and set `DATABASE_URL`, `JWT_SECRET`, `API_PORT`, and `CORS_ORIGIN`.
 - Prefer a long random `JWT_SECRET` in production.
 - Run production Prisma migrations during deployment with `npm run db:deploy --workspace apps/api` or your platform's release command.

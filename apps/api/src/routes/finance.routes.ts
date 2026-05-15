@@ -41,16 +41,6 @@ financeRouter.post(
   })
 );
 
-financeRouter.get(
-  '/transactions/export.csv',
-  asyncHandler(async (req, res) => {
-    const csv = await exportTransactionsCsv(req.user!.userId, req.query);
-    res.header('Content-Type', 'text/csv');
-    res.attachment('spendwise-transactions.csv');
-    res.send(csv);
-  })
-);
-
 financeRouter.patch(
   '/transactions/:id',
   asyncHandler(async (req, res) => {
@@ -62,6 +52,16 @@ financeRouter.delete(
   '/transactions/:id',
   asyncHandler(async (req, res) => {
     res.json(await deleteTransaction(req.user!.userId, req.params.id));
+  })
+);
+
+financeRouter.get(
+  '/transactions/export.csv',
+  asyncHandler(async (req, res) => {
+    const csv = await exportTransactionsCsv(req.user!.userId, req.query);
+    res.header('Content-Type', 'text/csv');
+    res.attachment('spendwise-transactions.csv');
+    res.send(csv);
   })
 );
 
